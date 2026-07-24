@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KeseAi - AI Image Background Generator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Paystack Inline Popup Script -->
+  <script src="https://js.paystack.co/v2/inline.js"></script>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen font-sans">
+
+  <!-- Header -->
+  <header class="border-b border-gray-800 p-5 flex justify-between items-center max-w-6xl mx-auto">
+    <span class="text-3xl font-extrabold text-indigo-500">Kese<span class="text-white">Ai</span></span>
+    <span class="bg-indigo-950 text-indigo-300 border border-indigo-800 px-3 py-1 rounded-full text-sm font-semibold">
+      Rate: ₦50 / Generation
+    </span>
+  </header>
+
+  <!-- Workspace -->
+  <main class="max-w-2xl mx-auto px-4 py-12">
+    <div class="bg-gray-800 rounded-2xl p-6 shadow-2xl border border-gray-700 space-y-6">
+      
+      <div>
+        <label class="block text-sm font-medium text-gray-300 mb-2">Customer Email</label>
+        <input type="email" id="email-address" placeholder="user@example.com" class="w-full bg-gray-900 border border-gray-700 rounded-lg p-3 text-white focus:outline-none focus:border-indigo-500" required />
+      </div>
+
+      <div class="border-t border-gray-700 pt-6 flex items-center justify-between">
+        <div>
+          <p class="text-xs text-gray-400">Total Charge</p>
+          <p class="text-2xl font-bold text-indigo-400">₦50</p>
+        </div>
+        <button onclick="payWithPaystack()" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 px-6 rounded-xl transition">
+          Pay ₦50 & Generate
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    function payWithPaystack() {
+      const userEmail = document.getElementById('email-address').value;
+
+      if (!userEmail) {
+        alert("Please enter a valid email address.");
+        return;
+      }
+
+      // Initialize Paystack Inline Popup
+      const popup = new Paystack();
+      popup.newTransaction({
+        key: 'YOUR_PUBLIC_KEY_HERE', // Paste your Public Key (pk_test_... or pk_live_...) here
+        email: userEmail,
+        amount: 50 * 100, // Amount in kobo (₦50 = 5000 kobo)
+        currency: 'NGN',
+        onSuccess: (transaction) => {
+          alert('Payment Successful! Transaction Ref: ' + transaction.reference);
+          // TODO: Trigger your AI background removal API call here!
+        },
+        onCancel: () => {
+          alert('Payment was cancelled.');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
