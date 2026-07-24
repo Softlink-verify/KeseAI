@@ -3,68 +3,182 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KeseAi - AI Image Background Generator</title>
+  <title>KeseAi - Premium AI Backgrounds</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Paystack Inline Popup Script -->
   <script src="https://js.paystack.co/v2/inline.js"></script>
-</head>
-<body class="bg-gray-900 text-gray-100 min-h-screen font-sans">
+  <script>
+    // Define the custom milky and gold palette
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'kese-milky': '#FDFCF5', // Main background color
+            'kese-gold': {
+              light: '#F3E5AB', // Soft cream gold
+              DEFAULT: '#D4AF37', // Metallic gold accent
+              dark: '#A67C00' // Deep gold
+            },
+            'kese-blue': {
+              DEFAULT: '#0F172A', // Navy base
+              accent: '#3B82F6' // Bright blue
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Texture and Gradient Classes */
+    .bg-texture-milky {
+      background-color: #FDFCF5;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e6e1c9' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v2zM6 34v-4H4v4H0v2h4v4h2v-4h4v2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #D4AF37 0%, #F3E5AB 50%, #A67C00 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
 
-  <!-- Header -->
-  <header class="border-b border-gray-800 p-5 flex justify-between items-center max-w-6xl mx-auto">
-    <span class="text-3xl font-extrabold text-indigo-500">Kese<span class="text-white">Ai</span></span>
-    <span class="bg-indigo-950 text-indigo-300 border border-indigo-800 px-3 py-1 rounded-full text-sm font-semibold">
-      Rate: ₦50 / Generation
-    </span>
+    .btn-gold-gradient {
+      background: linear-gradient(135deg, #A67C00 0%, #D4AF37 100%);
+      transition: all 0.3s ease;
+    }
+
+    .btn-gold-gradient:hover {
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+      transform: translateY(-1px);
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+  </style>
+</head>
+<body class="bg-texture-milky text-kese-blue min-h-screen font-sans">
+
+  <!-- Elegant Header -->
+  <header class="border-b border-kese-gold-light/40 bg-white/70 backdrop-blur-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <!-- Logo Icon (Gold/Blue Gradient) -->
+        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-kese-blue to-kese-gold-DEFAULT"></div>
+        <span class="text-3xl font-extrabold gold-gradient-text">Kese<span class="text-kese-blue">Ai</span></span>
+      </div>
+      <div class="flex items-center space-x-4">
+        <span class="bg-kese-gold-light text-kese-gold-dark px-3 py-1 rounded-full text-sm font-semibold border border-kese-gold">
+          ₦50 / Gen
+        </span>
+        <button class="text-sm font-medium text-kese-blue hover:text-kese-gold-dark transition">
+          Sign In
+        </button>
+      </div>
+    </div>
   </header>
 
-  <!-- Workspace -->
-  <main class="max-w-2xl mx-auto px-4 py-12">
-    <div class="bg-gray-800 rounded-2xl p-6 shadow-2xl border border-gray-700 space-y-6">
-      
-      <div>
-        <label class="block text-sm font-medium text-gray-300 mb-2">Customer Email</label>
-        <input type="email" id="email-address" placeholder="user@example.com" class="w-full bg-gray-900 border border-gray-700 rounded-lg p-3 text-white focus:outline-none focus:border-indigo-500" required />
+  <!-- Main Showcase Dashboard -->
+  <main class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+    
+    <!-- Upload Section (Milky with Texture) -->
+    <div class="md:col-span-2 space-y-8">
+      <div class="glass-card rounded-3xl p-8 shadow-sm">
+        <h2 class="text-2xl font-bold mb-1">Step 1: Upload Your Canvas</h2>
+        <p class="text-gray-600 mb-6">Select the image you want the AI to transform.</p>
+        
+        <div class="border-4 border-dashed border-kese-gold-light/50 hover:border-kese-gold rounded-2xl p-12 text-center cursor-pointer transition bg-white/50">
+          <svg class="mx-auto h-16 w-16 text-kese-gold-DEFAULT mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 002-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+          </svg>
+          <p class="text-lg font-medium text-kese-blue">Click or Drag Image</p>
+          <p class="text-gray-500 text-sm mt-1">Supports PNG, JPG, WEBP (Max 10MB)</p>
+        </div>
       </div>
 
-      <div class="border-t border-gray-700 pt-6 flex items-center justify-between">
-        <div>
-          <p class="text-xs text-gray-400">Total Charge</p>
-          <p class="text-2xl font-bold text-indigo-400">₦50</p>
+      <!-- Background Style Selector -->
+      <div class="glass-card rounded-3xl p-8 shadow-sm">
+        <h2 class="text-2xl font-bold mb-1">Step 2: Define the Magic</h2>
+        <p class="text-gray-600 mb-6">Choose an AI background theme from our premium collection.</p>
+        
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <button class="p-4 rounded-xl border border-kese-gold bg-kese-gold-light/30 text-kese-gold-dark flex flex-col items-center hover:bg-kese-gold-light/50 transition">
+            <span class="text-2xl mb-1">✨</span>
+            <span class="text-sm font-semibold">Minimalist Studio</span>
+          </button>
+          <button class="p-4 rounded-xl border border-gray-200 bg-white hover:border-kese-gold transition text-kese-blue flex flex-col items-center">
+            <span class="text-2xl mb-1">☕</span>
+            <span class="text-sm font-semibold">Sunlit Cafe</span>
+          </button>
+          <button class="p-4 rounded-xl border border-gray-200 bg-white hover:border-kese-gold transition text-kese-blue flex flex-col items-center">
+            <span class="text-2xl mb-1">🎨</span>
+            <span class="text-sm font-semibold">Abstract Pastel</span>
+          </button>
+          <button class="p-4 rounded-xl border border-gray-200 bg-white hover:border-kese-gold transition text-kese-blue flex flex-col items-center">
+            <span class="text-2xl mb-1">🌙</span>
+            <span class="text-sm font-semibold">Dreamy Night</span>
+          </button>
         </div>
-        <button onclick="payWithPaystack()" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 px-6 rounded-xl transition">
+      </div>
+    </div>
+
+    <!-- Right Payment/Status Panel (Blue/Gold Accent) -->
+    <div class="bg-kese-blue text-white rounded-3xl p-8 shadow-xl space-y-8 h-fit sticky top-28">
+      <div class="flex items-center space-x-3">
+        <img src="https://w7.pngwing.com/pngs/423/942/png-transparent-paystack-hd-logo.png" class="h-8 w-8 rounded-full border border-gray-700 p-1" alt="Paystack">
+        <span class="font-bold text-lg">Secure Checkout</span>
+      </div>
+      
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-300 mb-1">Confirm Email</label>
+          <input type="email" id="email-address" placeholder="you@example.com" class="w-full bg-white text-kese-blue rounded-xl p-4 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-kese-gold" required />
+        </div>
+        <p class="text-xs text-gray-400">By paying, you agree to the ₦50/generation fee. Generations usually take 10-20 seconds.</p>
+      </div>
+
+      <div class="border-t border-gray-700 pt-6">
+        <div class="flex justify-between items-end mb-6">
+          <p class="text-sm text-gray-300">Total Due:</p>
+          <p class="text-4xl font-extrabold gold-gradient-text">₦50<span class="text-base text-gray-300 font-medium"> / image</span></p>
+        </div>
+        <button onclick="payWithPaystack()" class="w-full btn-gold-gradient text-kese-blue font-bold py-4 px-8 rounded-xl text-lg shadow-lg">
           Pay ₦50 & Generate
         </button>
       </div>
-
     </div>
+
   </main>
+
+  <footer class="mt-20 border-t border-kese-gold-light/30 py-8 text-center text-gray-500">
+    KeseAi &copy; 2023. Powered by AI, Secured by Paystack.
+  </footer>
 
   <script>
     function payWithPaystack() {
       const userEmail = document.getElementById('email-address').value;
 
-      if (!userEmail) {
-        alert("Please enter a valid email address.");
+      if (!userEmail || !userEmail.includes('@')) {
+        alert("danielirewole9@gmail.com");
         return;
       }
 
-      // Initialize Paystack Inline Popup
       const popup = new Paystack();
       popup.newTransaction({
-        key: 'pk_test_efa07ff4fc979e4a767b5a3076ae182db19547b5', // Paste your Public Key (pk_test_... or pk_live_...) here
+        key: 'pk_test_YOUR_ACTUAL_KEY_HERE', // <-- pk_test_efa07ff4fc979e4a767b5a3076ae182db19547b5
         email: userEmail,
         amount: 50 * 100, // Amount in kobo (₦50 = 5000 kobo)
         currency: 'NGN',
         onSuccess: (transaction) => {
-          alert('Payment Successful! Transaction Ref: ' + transaction.reference);
-          // TODO: Trigger your AI background removal API call here!
+          alert('Test Payment Successful! Reference: ' + transaction.reference);
         },
         onCancel: () => {
-          alert('Payment was cancelled.');
+          alert('Payment window closed.');
         }
       });
     }
   </script>
 </body>
-</html>
+  </html>
